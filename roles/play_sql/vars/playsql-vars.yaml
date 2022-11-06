@@ -1,0 +1,8 @@
+---
+# yaml vars file for mysql
+
+# MySQL Setup
+mysql_root_password: Slag5767
+mysql_app_db: laravel
+mysql_app_user: ansible
+mysql_app_pass: Slag5767

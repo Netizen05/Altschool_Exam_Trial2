@@ -1,0 +1,23 @@
+---
+# apache2 yaml file for tasks
+
+- name: Install Apache2
+  apt: name=apache2 update_cache=yes state=latest
+
+# Configuration for apache2 
+- name: copy vhost to salve
+  template:
+    src: "laravel.conf.j2"
+    dest: "{{path_vhost}}"
+
+- name: Enables new site
+  file:
+    src: "/etc/apache2/sites-available/laravel.conf"
+    dest: "/etc/apache2/sites-enabled/laravel.conf"
+    state: link
+
+- name: Removes "default" site
+  file:
+    path: "/etc/apache2/sites-enabled/000-default.conf"
+    state: absent
+
